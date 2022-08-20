@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello Word page</title>
+
+    </head>
+    <body>
+        <h1>ZikirMatik</h1>
+
+        <p>Please click the increment button to increaes number.
+            click on the Reset button to reset the counter to zero.
+        </p>
+        <div>
+            Counter Value <span id="counterValue"></span>
+        </div>
+        <button onClick="handleIncrementeButton()">Increment</button>
+        <button onClick="handleResetButton()">Reset</button>
+
+        <script>
+            var number = 100;
+
+            document.getElementById("counterValue").innerText= number;
+
+            function handleIncrementeButton(){
+                console.log("inside handleIncrementeButton");
+                number = number +1;
+
+                document.getElementById("counterValue").innerText= number;
+            }
+
+            function handleResetButton(){
+                console.log("inside handlResetButton");
+
+                number = 0;
+                document.getElementById("counterValue").innerText= number;
+            }
+
+        </script>
+    </body>
+
+</html>
+
