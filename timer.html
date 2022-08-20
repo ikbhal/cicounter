@@ -13,9 +13,13 @@
     </div>
 
     <script>
-        var h = 4;
-        var m = 43;
-        var s = 0;
+        var d = new Date();
+        var h = d.getHours();
+        if(h>12){
+            h=h-12;
+        }
+        var m = d.getMinutes();
+        var s = d.getSeconds();
         // hour
         document.getElementById("hour").innerText = h; 
 
