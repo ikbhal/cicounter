@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <title>Timer</title>
+</head>
+<body>
+    <h1>CI Timer</h1>
+    <div id="timer">
+        <span id="hour"></span>
+        :
+        <span id="minute"></span>
+        :
+        <span id="second"></span>
+    </div>
+
+    <script>
+        var h = 4;
+        var m = 43;
+        var s = 0;
+        // hour
+        document.getElementById("hour").innerText = h; 
+
+        // minute
+        document.getElementById("minute").innerText = m; 
+
+        // second
+        document.getElementById("second").innerText = s; 
+
+        function updateTime(){
+            console.log("inside updateTime");
+            s = s+1;
+            if(s ==60){
+                s =0;
+                m =m+1;
+                if(m ==60){
+                    m = 0;
+                    h= h+1;
+
+                    // 1 ...11, 12 -> 1
+                    if(h == 13){
+                        h = 1;
+                    }
+                }
+            }
+            document.getElementById("second").innerText = s;
+            document.getElementById("minute").innerText = m;
+            document.getElementById("hour").innerText = h;
+
+            // 1.... 59, 60-0
+
+        }
+ 
+        setInterval(updateTime, 1000);
+
+
+    </script>
+</body>
+</html>
