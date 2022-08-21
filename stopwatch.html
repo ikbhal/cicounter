@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+    <title>Stop Watch</title>
+</head>
+<body>
+    <h1>Stop Watch</h1>
+
+    <div>
+        <span id="minutes">0</span>m
+        &nbsp;
+        <span id="seconds">0</span>s
+        &nbsp; 
+        <span id="milliseconds">00</span>
+    </div>
+    <button onClick="handleStartStopButton()" id="startStopButton">Start</button>
+    <button id="resetButton" onClick="handleResetButtion()">Reset</button>
+
+    <script>
+        var minutes =0;
+        var seconds = 0;
+        var millionSeconds = 0;
+        var intervalObj = null;
+        //1000 million seconds -> 1 second
+        // 10 milli seconds 
+        // 10 * 100  -> 1000 milliseconds ->1 second
+        // 000 to 999 -> 1000
+
+        function handleStartStopButton(){
+            console.log("inside handleStartStopButton");
+
+            var buttonText = document.getElementById("startStopButton").innerText ;
+
+            if(buttonText == 'Start'){
+                buttonText = 'Stop';
+            }else {
+                buttonText = "Start";
+            }
+
+            document.getElementById("startStopButton").innerText = buttonText;
+
+            intervalObj = setInterval(updateStopwatch, 10);
+        }
+
+        function handleResetButtion(){
+            console.log("inside handleResetButtion");
+            clearInterval(intervalObj);
+
+            minutes =0;
+            seconds = 0;
+            millionSeconds = 0;
+
+            displayStopWatch();
+            document.getElementById("startStopButton").innerText = "Start";
+
+        }
+
+        function displayStopWatch(){
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+            var displayMillionSecondPart = (millionSeconds/10).toFixed(2);
+            document.getElementById("milliseconds").innerText = displayMillionSecondPart;
+        }
+        
+        function updateStopwatch(){
+            console.log("inside updateStopwatch");
+
+            millionSeconds = millionSeconds +10; 
+            if(millionSeconds>=1000){
+                millionSeconds = 0;
+                seconds = seconds+1;
+
+                // second 0 ... 59, 60 -> 0 
+                if(seconds >=60){
+                    minutes = minutes + 1;
+                    seconds = 0;
+                }
+            }
+            displayStopWatch();
+        }
+        
+
+
+    </script>
+</body>
+</html>
